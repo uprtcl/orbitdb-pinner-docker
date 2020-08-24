@@ -1,0 +1,41 @@
+version: '3'
+
+services: 
+  pinner:
+    build:
+      context: ./pinner
+      dockerfile: Dockerfile
+    ports: 
+      - 3000:3000
+    volumes:
+      - ~/orbitdb:/app/orbitdb
+    restart: always
+    deploy:
+      resources:
+        limits:
+          memory: 4096M
+
+  go-ipfs:
+    image: ipfs/go-ipfs
+    restart: always
+    ports: 
+      - 4001:4001
+      - 5001:5001
+      - 8080:8080
+      - 8081:8081
+    volumes:
+      - ~/ipfs:/data/ipfs
+    deploy:
+      resources:
+        limits:
+          memory: 2048M
+          
+  rendezvous:
+    image: libp2p/js-libp2p-webrtc-star
+    restart: always
+    ports:
+      - 9090:9090
+    deploy:
+      resources:
+        limits:
+          memory: 2048M
