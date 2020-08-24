@@ -1,7 +1,10 @@
 {
   "http": {
     "port": 3000,
-    "enabled": true
+    "enabled": true,
+    "cors": {
+      "origin": "*"
+    }
   },
   "ipfsConfig": {
     "repo": "./orbitdb/pinner",
