@@ -8,7 +8,7 @@ services:
     ports: 
       - 3000:3000
     volumes:
-      - ~/orbitdb:/app/orbitdb
+      - /home/ec2-user/orbitdb:/app/orbitdb
     restart: always
     deploy:
       resources:
@@ -24,7 +24,7 @@ services:
       - 8080:8080
       - 8081:8081
     volumes:
-      - ~/ipfs:/data/ipfs
+      - /home/ec2-user/ipfs:/data/ipfs
     deploy:
       resources:
         limits:
